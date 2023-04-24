@@ -1,9 +1,19 @@
 import { useState } from "react";
-import { useGetGoodsQuery } from "./redux";
+import { useGetGoodsQuery, useAddProductMutation } from "./redux";
 
 const App = () => {
   const [ count, setCount ] = useState('');
+  const [ newProduct, setNewProduct ] = useState('');
+
   const { data = [], isLoading } = useGetGoodsQuery(count);
+  const [addProduct, {isError}] = useAddProductMutation();
+
+  const handleAddProduct = async () => {
+    if (newProduct) {
+      await addProduct({ name: newProduct }).unwrap();
+      setNewProduct('');
+    }
+  }
 
   if (isLoading) {
     return <h2>Loading ...</h2>
@@ -12,6 +22,15 @@ const App = () => {
   return (
     <div className="container">
       <h1>RTK Query</h1>
+
+      <div className="add-new">
+        <input 
+          type="text"
+          value={ newProduct }
+          onChange={ e => setNewProduct(e.target.value) }
+        />
+        <button onClick={ handleAddProduct }>Add product</button>
+      </div>
 
       <div className="select-count">
         <select value={ count } onChange={ e => setCount(e.target.value) }>

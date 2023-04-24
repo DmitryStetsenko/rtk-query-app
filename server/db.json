@@ -1,7 +1,24 @@
 {
   "goods": [
-    { "id": 1, "name": "notebook" },
-    { "id": 2, "name": "smartphone" },
-    { "id": 3, "name": "TV" }
+    {
+      "id": 1,
+      "name": "notebook"
+    },
+    {
+      "id": 2,
+      "name": "smartphone"
+    },
+    {
+      "id": 3,
+      "name": "TV"
+    },
+    {
+      "name": "kettle",
+      "id": 4
+    },
+    {
+      "name": "washing machine",
+      "id": 5
+    }
   ]
 }
