@@ -2,6 +2,6 @@
   "goods": [
     { "id": 1, "name": "notebook" },
     { "id": 2, "name": "smartphone" },
-    { "id": 1, "name": "TV" }
+    { "id": 3, "name": "TV" }
   ]
 }
