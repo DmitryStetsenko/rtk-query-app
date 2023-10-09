@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useGetGoodsQuery, useAddProductMutation } from "./redux";
+import { useGetGoodsQuery, useAddProductMutation, useDelProductMutation } from "./redux";
 
 const App = () => {
   const [ count, setCount ] = useState('');
@@ -7,12 +7,17 @@ const App = () => {
 
   const { data = [], isLoading } = useGetGoodsQuery(count);
   const [addProduct, {isError}] = useAddProductMutation();
+  const [delProduct ] = useDelProductMutation();
 
   const handleAddProduct = async () => {
     if (newProduct) {
       await addProduct({ name: newProduct }).unwrap();
       setNewProduct('');
     }
+  }
+
+  const handleDelProduct = async (id) => {
+    await delProduct(id).unwrap();
   }
 
   if (isLoading) {
